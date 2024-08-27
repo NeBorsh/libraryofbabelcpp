@@ -5,9 +5,6 @@
 #include <chrono>
 
 const std::string CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
-const size_t LINE_LENGTH = 195;
-const size_t LINES_PER_PAGE = 200;
-const size_t PAGES_TO_GENERATE = 3800;
 
 std::string generate_line(size_t length, std::mt19937& gen, std::uniform_int_distribution<>& dis) {
     std::string line;
@@ -18,6 +15,17 @@ std::string generate_line(size_t length, std::mt19937& gen, std::uniform_int_dis
 }
 
 int main() {
+    size_t LINE_LENGTH, LINES_PER_PAGE, PAGES_TO_GENERATE;
+
+    std::cout << "Enter the length of each line: ";
+    std::cin >> LINE_LENGTH;
+
+    std::cout << "Enter the number of lines per page: ";
+    std::cin >> LINES_PER_PAGE;
+
+    std::cout << "Enter the number of pages to generate: ";
+    std::cin >> PAGES_TO_GENERATE;
+
     std::ofstream file("babylonian_library.txt");
     if (!file.is_open()) {
         std::cerr << "Unable to open file" << std::endl;
